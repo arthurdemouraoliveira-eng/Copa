@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pequeno Pedido</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff; /* Azul clarinho */
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+            position: relative; /* Para a imagem flutuar se quiser */
+        }
+        h1 {
+            color: #4682b4; /* Azul aço */
+            font-size: 1.7rem;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        #btn-sim {
+            background-color: #5cb85c; /* Verde */
+            color: white;
+        }
+        #btn-sim:hover {
+            background-color: #4cae4c;
+            transform: translateY(-2px);
+        }
+        #btn-nao {
+            background-color: #d9534f; /* Vermelho */
+            color: white;
+            cursor: not-allowed; /* Indica que não é clicável */
+            opacity: 0.7; /* Para parecer desativado */
+        }
+        /* Tela Final */
+        #tela-final {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: #e6e6fa; /* Lavanda clarinha */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10;
+        }
+        #tela-final h2 {
+            color: #483d8b; /* Azul escuro */
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        }
+        #imagem-pequena {
+            width: 120px; /* Tamanho da imagem */
+            height: 120px;
+            border-radius: 50%; /* Faz a imagem ser redonda */
+            object-fit: cover; /* Garante que a imagem preencha o círculo */
+            border: 4px solid #b0c4de; /* Borda ao redor da imagem */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="pergunta-box">
+        <h1>O Arthur pode tirar 20 dias de compensação?</h1>
+        <button id="btn-sim" class="btn" onclick="mostrarFinal()">Sim</button>
+        <button id="btn-nao" class="btn">Não</button> </div>
+
+    <div id="tela-final">
+        <h2>Obrigado! Você não foi péssima hoje! 😉</h2>
+        <img id="imagem-pequena" src="LINK_DA_SUA_IMAGEM_AQUI" alt="Imagem pequena">
+    </div>
+
+    <script>
+        function mostrarFinal() {
+            document.getElementById('pergunta-box').style.display = 'none';
+            document.getElementById('tela-final').style.display = 'flex';
+        }
+
+        // Isso impede o botão 'Não' de fazer algo, embora já não tenha onclick
+        document.getElementById('btn-nao').addEventListener('click', function(event) {
+            event.preventDefault(); // Impede qualquer ação padrão do botão
+            alert('Essa opção não está disponível para seleção! 😉');
+        });
+    </script>
+</body>
+</html>
